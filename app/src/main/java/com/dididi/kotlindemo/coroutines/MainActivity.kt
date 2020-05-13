@@ -1,12 +1,13 @@
-package com.dididi.kotlindemo
+package com.dididi.kotlindemo.coroutines
 
 import android.app.Dialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.widget.Toast
+import com.dididi.kotlindemo.R
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
@@ -14,7 +15,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.POST
 import java.net.HttpURLConnection
 import java.net.URL
@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(userName: String, password: String) {
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
-        coroutineScope.launch {
+        CoroutineScope(Dispatchers.Main).launch {
             showLoading()
-            askLogin(userName, password, object : Callback {
+            askLogin(userName, password, object :
+                Callback {
                 override fun success() {
                     Toast.makeText(this@MainActivity, "登录成功", Toast.LENGTH_SHORT).show()
                 }
@@ -123,8 +123,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setImage() {
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
-        coroutineScope.launch {
+        CoroutineScope(Dispatchers.Main).launch {
             //主线程
             log("main")
             //io线程进行下载图片操作
@@ -136,8 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun splitImage() {
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
-        coroutineScope.launch {
+        CoroutineScope(Dispatchers.Main).launch {
             val source =
                 getImageResource("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576236172134&di=47f0d77404cd15208c59ba9dcb6ed6c2&imgtype=0&src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2015%2F0408%2F779334da99e40adb587d0ba715eca102.jpg")
             //async开启协程返回的对象是Deferred 是一个job 可通过await获取结果
@@ -149,11 +147,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * {@link withContext()用于切换指定线程}
-     * @see Dispatchers.Main 主线程
-     * @see Dispatchers.IO IO线程 网络请求或读写任务
-     * @see Dispatchers.Default CPU 密集型的任务，比如计算
-     *
+     * [withContext]用于切换指定线程
      */
     private suspend fun getImageResource(url: String): Bitmap? = withContext(Dispatchers.IO) {
         val connection = URL(url).openConnection() as HttpURLConnection
