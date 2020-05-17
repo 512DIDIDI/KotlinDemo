@@ -1,9 +1,6 @@
 package com.dididi.kotlindemo.coroutines
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 
 /**
@@ -20,10 +17,16 @@ import kotlinx.coroutines.runBlocking
 fun main() = runBlocking<Unit>{
     //主线程
     launch {
-        println("thread:${Thread.currentThread().name}")
-        //切换到IO线程
+        println("1.thread:${Thread.currentThread().name}")
+        //第一种切换方式 使用launch(CoroutineContext) 指定切换线程
         launch(Dispatchers.IO) {
-            println("thread:${Thread.currentThread().name}")
+            println("3.thread:${Thread.currentThread().name}")
         }
+        println("2.thread:${Thread.currentThread().name}")
+        //第二种切换方式 使用withContext(CoroutineContext) 切换到指定线程，并在闭包结束后切换回去
+        withContext(Dispatchers.IO){
+            println("4.thread:${Thread.currentThread().name}")
+        }
+        println("5.thread:${Thread.currentThread().name}")
     }
 }

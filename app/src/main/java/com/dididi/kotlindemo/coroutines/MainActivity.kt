@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private val loadings = arrayListOf<Dialog>()
     private lateinit var service: LoginService
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(userName: String, password: String) {
-        CoroutineScope(Dispatchers.Main).launch {
+        mainScope.launch {
             showLoading()
             askLogin(userName, password, object :
                 Callback {
@@ -123,19 +124,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setImage() {
-        CoroutineScope(Dispatchers.Main).launch {
+        mainScope.launch {
             //主线程
             log("main")
-            //io线程进行下载图片操作
+            //切换到io线程进行下载图片操作
             val image =
                 getImageResource("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576236172134&di=47f0d77404cd15208c59ba9dcb6ed6c2&imgtype=0&src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2015%2F0408%2F779334da99e40adb587d0ba715eca102.jpg")
-            //切换为主线程更新ui
+            //主线程更新ui
             activityMainIv.setImageBitmap(image)
         }
     }
 
     private fun splitImage() {
-        CoroutineScope(Dispatchers.Main).launch {
+        mainScope.launch {
             val source =
                 getImageResource("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576236172134&di=47f0d77404cd15208c59ba9dcb6ed6c2&imgtype=0&src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2015%2F0408%2F779334da99e40adb587d0ba715eca102.jpg")
             //async开启协程返回的对象是Deferred 是一个job 可通过await获取结果

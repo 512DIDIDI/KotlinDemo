@@ -32,6 +32,7 @@ fun main() = runBlocking<Unit>{
 //    }
 //}
 
+//但实际上对于java来说，不应该直接用Thread和Thread.sleep()，而应该使用线程池创建线程
 //相对于java的Executors线程池，没有实质上的性能提升
 //fun main() {
 //    val executor = Executors.newSingleThreadScheduledExecutor()
