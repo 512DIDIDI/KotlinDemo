@@ -27,6 +27,10 @@ fun main() = runBlocking<Unit>{
         withContext(Dispatchers.IO){
             println("4.thread:${Thread.currentThread().name}")
         }
+        //并发任务切换线程
+        async(Dispatchers.IO) {
+
+        }
         println("5.thread:${Thread.currentThread().name}")
     }
 }

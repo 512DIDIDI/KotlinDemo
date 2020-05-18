@@ -45,6 +45,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.cancel()
+    }
+
     private fun login(userName: String, password: String) {
         mainScope.launch {
             showLoading()
