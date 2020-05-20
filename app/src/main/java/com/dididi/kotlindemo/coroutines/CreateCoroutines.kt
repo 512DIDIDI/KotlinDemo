@@ -42,7 +42,7 @@ fun main(){
             delay(200L)
             println("2.Task from runBlocking")
         }
-        // 创建一个协程作用域，并在所有已启动的子协程执行完毕前不会结束
+        //创建一个协程作用域，并在所有已启动的子协程执行完毕前不会结束
         //同runBlocking类似，但其会释放底层线程用于其他用途
         coroutineScope {
             launch {
