@@ -1,6 +1,4 @@
-package com.dididi.kotlindemo.type
-
-import java.util.Map
+package com.dididi.kotlindemo.basic
 
 
 /**
@@ -17,7 +15,7 @@ fun main(){
     val a:List<Int> = listOf(1,2,3,4)
     //可变List 有remove add
     val b:MutableList<Int> = mutableListOf(1,2,3,4)
-    //不可变map，键值对可以用 to 来配对
+    //不可变map，键值对可以用 to 来配对 或者是Pair
     val mapA = mapOf<String,Any>("name" to "dididi", "age" to 23)
     //不可变map
     val mapB = mutableMapOf<String,Any>("name" to "dididi", "age" to 23)

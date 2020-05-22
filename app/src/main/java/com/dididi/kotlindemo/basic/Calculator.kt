@@ -1,4 +1,4 @@
-package com.dididi.kotlindemo.type
+package com.dididi.kotlindemo.basic
 
 import java.lang.Exception
 import java.util.*
