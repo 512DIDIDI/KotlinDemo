@@ -1,7 +1,6 @@
 package com.dididi.kotlindemo.`class`
 
 import java.io.File
-import java.nio.file.Files
 
 
 /**
@@ -9,6 +8,9 @@ import java.nio.file.Files
  * @email yc512yc@163.com
  * @since 25/05/2020
  * @describe 空类型安全
+ * 1. 尽可能使用val来声明不可变引用 让程序含义更加清晰确定
+ * 2. 尽可能减少函数对外部变量的访问，也能为函数式编程提供基础
+ * 3. 必要时创建局部变量指向外部变量
  */
 
 fun main() {
@@ -33,4 +35,20 @@ fun main() {
 //    println(dic.size)
     //安全的调用方式
     println(dic?.size)
+    val fruit: Fruit = Apple()
+    //判断类型 kotlin中的is判断后
+    if (fruit is Apple) {
+        //范围内就不需要再强转类型了
+        println(fruit.name)
+    }
+    //as用来强制类型转换
+    val apple =  fruit as Apple
+    //可空类型转换
+    val apple2 = (fruit as? Apple)?.name
+}
+
+open class Fruit()
+
+class Apple() : Fruit(){
+    val name = "apple"
 }
