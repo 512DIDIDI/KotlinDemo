@@ -24,7 +24,7 @@ operator fun String.times(right: Int) = (1..right).joinToString("") { this }
 operator fun String.div(right: Any?): Int {
     return this.windowed(right.toString().length, 1) {
         it == right.toString()
-    }.count { it }
+    }/*返回List<Boolean>*/.count { it/*这个it是前面List内的元素*/ }
 }
 
 
