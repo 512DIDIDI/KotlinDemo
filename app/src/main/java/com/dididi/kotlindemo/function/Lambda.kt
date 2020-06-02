@@ -60,6 +60,7 @@ fun useLambda() {
  * 高阶函数实战 打印fibonacci
  */
 fun main() {
+    val start = System.currentTimeMillis()
     cost {
         //获取实例化后的函数对象
         val fibonacci = fibonacci()
@@ -68,6 +69,8 @@ fun main() {
             println(fibonacci())
         }
     }
+    //未使用内联函数，函数调用和创建lambda表达式需要消耗时间
+    println("main:${System.currentTimeMillis() - start}ms")
 }
 
 //函数类型作为参数

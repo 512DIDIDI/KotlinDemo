@@ -1,7 +1,5 @@
 package com.dididi.kotlindemo.expression
 
-import com.google.gson.annotations.Until
-
 
 /**
  * @author dididi(叶超)
@@ -33,8 +31,11 @@ val func2: () -> Unit = fun() {}
  * ()->Unit 函数类型
  * lambda表达式返回值是闭包的最后一行
  * java中的lambda表达式实际是kotlin中的SAM(Single Abstract Method) 也就是接口并且只有单一方法
- * 实际java并没有引入函数类型，而只是SAM的语法糖
- * 而kotlin的lambda表达式实际是匿名函数
+ * 实际java由于并没有引入函数类型，而只是SAM的语法糖
+ * 而kotlin由于引进了[Function],创建了包含很多参数的[Function0]...等等，而实际上这也是SAM，
+ * 只是kotlin对SAM接口中的方法invoke做了操作符重载，使其使用()就相当于调用.invoke方法
+ * 所以实际kotlin中使用lambda表达式或者匿名函数作为返回值或者传参等实际都是[Function]的子类接口，跟java并无差别
+ * 只是kotlin引入了[Function]接口，我们可以实例化出函数对象
  */
 val lambda: () -> Unit = {
     println("hello")

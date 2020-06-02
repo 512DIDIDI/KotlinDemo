@@ -151,14 +151,20 @@ class Data() {
             field = value
         }
 
-    val name:String
+    var realName = ""
+
+    //no backing-field 没有状态的属性 只有get/set 相当于两个方法
+    var name: String
         get() {
             return "dididi"
         }
+        set(value) {
+            realName = value
+        }
 }
 
-fun main(){
-    val child = Child(1,"dididi")
+fun main() {
+    val child = Child(1, "dididi")
     child.abstractFunc()
     child.openFunc1()
     child.openFunc2()
@@ -174,7 +180,7 @@ fun main(){
     child.interFunc2()
     //拿到属性的引用，但这里调用需要一个receiver
     val ageRef = Data::age
-    ageRef.set(Data(),18)
+    ageRef.set(Data(), 18)
     val data = Data()
     //通过实例化对象拿到属性引用，调用时不需要receiver
     val nameRef = data::name
