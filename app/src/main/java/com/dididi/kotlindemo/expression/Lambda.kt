@@ -24,7 +24,7 @@ fun func() {
  * 用变量名()或变量名.invoke调用匿名函数
  * ()-Unit 函数类型
  */
-val func2: () -> Unit = fun() {}
+val func2: () -> Unit = {}
 
 /**
  * lambda表达式
