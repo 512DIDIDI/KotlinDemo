@@ -60,7 +60,7 @@ inline fun costInline(block: () -> Unit) {
     println("cost:${System.currentTimeMillis() - start}ms")
 }
 
-public lateinit var test: () -> Unit
+private lateinit var test: () -> Unit
 
 /**
  * 非内联函数不允许使用return从外部函数返回
