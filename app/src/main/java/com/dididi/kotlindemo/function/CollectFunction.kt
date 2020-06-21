@@ -44,7 +44,7 @@ fun main() {
     })
     //reduce：与fold同理，只是没有初始值，返回集合内元素类型
     println(list.reduce { acc, i -> acc - i })
-    //zip：将另一集合与该集合每个元素对应组成一个新的集合(新集合类型默认为Pair，或者lambda表达式返回类型)
+    //zip：将另一集合与该集合每个元素对应组成一个新的集合(新集合类型默认为lambda表达式返回类型)
     list.zip(listOf("hello", "dididi", "world", "!")) { a, b ->
         listOf(b + a)
     }.joinToString().let(::println)

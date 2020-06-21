@@ -1,7 +1,5 @@
 package com.dididi.kotlindemo.function
 
-import com.dididi.kotlindemo.function.cost
-
 /**
  * @author dididi(叶超)
  * @email yc512yc@163.com
@@ -9,10 +7,10 @@ import com.dididi.kotlindemo.function.cost
  * @describe 内联函数
  * 所谓内联(inline)，就是在编译时将内联函数替换到调用处
  * 适用：高阶函数(有函数类型的传参)
- * 优点：1.高阶函数的调用被替换，节省高阶函数调用的开销 2.节省了创建lambda表达式的开销
+ * 优点：1.高阶函数的调用被替换，节省高阶函数调用的开销 2.节省了创建lambda表达式的开销 3.可以在lambda表达式中直接使用return从外部函数返回
  * 缺点：可能会使代码量增加。
  * 过程：两次内联 1.高阶函数内联到调用处 2.lambda表达式内联到高阶函数参数调用处
- * 性能对比：Lambda[cost]调用处的时间与本类中[main]方法的时间消耗对比
+ * 性能对比：Lambda类中[cost]调用处的时间与本类中[main]方法的时间消耗对比
  * 限制：
  * 1.public/protected的内联方法只能访问对应类的public成员
  * 2.内联函数的函数参数不能赋值给变量(不能存储)
@@ -104,6 +102,7 @@ inline fun noInlineFunction(block: () -> Unit, noinline body: () -> Unit) {
 
 var pocket: Double = 0.0
 var money: Double
+    //内联属性
     inline get() = pocket
     inline set(value) {
         pocket = value
