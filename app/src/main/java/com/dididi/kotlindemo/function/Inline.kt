@@ -86,7 +86,9 @@ fun hasZeros(ints: IntArray): Boolean {
 }
 
 /**
- * 注意这种情况，当block()传参在另一个非内联函数内，需要使用 [crossinline] 禁止其局部返回
+ * 注意这种情况，
+ * 在内联函数里有个非内联函数 [Runnable] ,如果需要在其中调用 block
+ * 则需要添加crossinline 来使其可被内联，但由于return的不明确性，kt禁止了内联函数可以return的特性
  */
 inline fun banNonLocalReturn(crossinline block: () -> Unit) {
     Runnable { block() }
@@ -94,6 +96,7 @@ inline fun banNonLocalReturn(crossinline block: () -> Unit) {
 
 /**
  * 当使用多个函数传参的内联函数，但需要禁止某些函数内联，使用 [noinline] 关键字来禁止函数内联
+ * 在内联函数中使用 函数参数 作为 引用时 需要禁止其内联 标记[noinline]
  */
 inline fun noInlineFunction(block: () -> Unit, noinline body: () -> Unit) {
     block()
