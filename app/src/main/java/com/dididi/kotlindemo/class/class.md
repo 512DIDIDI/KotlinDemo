@@ -20,3 +20,6 @@
   5. is 类型判断
   6. as/as? 强制类型转换
 * [构造方法](Constructor.kt)
+* [延迟初始化](LazyInit.kt)
+* [权限控制](Visibility.kt)
+* [接口代理与属性代理](Delegate.kt)
