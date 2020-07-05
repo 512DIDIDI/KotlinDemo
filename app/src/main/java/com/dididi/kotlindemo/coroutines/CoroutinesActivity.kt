@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import com.dididi.kotlindemo.R
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_coroutine.*
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,7 +19,7 @@ import retrofit2.http.POST
 import java.net.HttpURLConnection
 import java.net.URL
 
-class MainActivity : AppCompatActivity() {
+class CoroutinesActivity : AppCompatActivity() {
 
     private val loadings = arrayListOf<Dialog>()
     private lateinit var service: LoginService
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_coroutine)
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.wanandroid.com")
             .addConverterFactory(GsonConverterFactory.create())
@@ -56,11 +56,11 @@ class MainActivity : AppCompatActivity() {
             askLogin(userName, password, object :
                 Callback {
                 override fun success() {
-                    Toast.makeText(this@MainActivity, "登录成功", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CoroutinesActivity, "登录成功", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun fail(errorMsg: String?) {
-                    Toast.makeText(this@MainActivity, "登录失败$errorMsg", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CoroutinesActivity, "登录失败$errorMsg", Toast.LENGTH_SHORT).show()
                 }
             })
             closeLoading()

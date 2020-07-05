@@ -13,5 +13,5 @@
   4. [挂起函数](SuspendFuction.kt)
   5. [取消与超时](CancelAndTimeout.kt)
   6. [并发任务](Async.kt)
-  7. [简单的实战](MainActivity.kt)
+  7. [简单的实战](CoroutinesActivity.kt)
 
