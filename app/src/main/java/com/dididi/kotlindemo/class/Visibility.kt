@@ -20,7 +20,7 @@ internal class InternalClass{
     /**
      * 可通过 @JvmName() 限定java的调用，也局限在模块内
      */
-    @JvmName("*jk")
+//    @JvmName("%jk")
     internal fun test(){
 
     }
