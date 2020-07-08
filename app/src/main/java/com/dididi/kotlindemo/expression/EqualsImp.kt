@@ -31,7 +31,7 @@ fun main() {
     println(set.joinToString())
 }
 
-class Person(val age: Int, val name: String) {
+private class Person(val age: Int, val name: String) {
     override fun equals(other: Any?): Boolean {
         val other2 = other as? Person ?: return false
         return other2.age == this.age && other2.name == this.name
