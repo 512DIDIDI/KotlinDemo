@@ -83,5 +83,6 @@ class InnerClass {
         InnerClass().Inner()
         //访问静态类 不会持有外部类的实例引用
         InnerClass.StaticClass()
+        ObjectClass.StaticObjectClass
     }
 }

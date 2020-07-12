@@ -25,6 +25,7 @@ fun main(){
     val stringList = ArrayList<String>()
     for (i in 0..10){
         //kotlin的add remove语法糖
+        //todo: 这里要注意 集合的add 会重载 plus/plusAssign 方法 如果使用val 就会默认使用plusAssign方法
         stringList += "num:$i"
         b -= i
     }
