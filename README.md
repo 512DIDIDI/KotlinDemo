@@ -38,4 +38,5 @@
   5. SAM转换
   6. 练习-统计文件中字符个数
   7. 练习-实现html DSL
+* [泛型](/app/src/main/java/com/dididi/kotlindemo/generic/generic.md)
 * [协程](/app/src/main/java/com/dididi/kotlindemo/coroutines/coroutines.md)
