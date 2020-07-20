@@ -31,15 +31,15 @@ package com.dididi.kotlindemo.generic
  * 2.协变还涉及到生产泛型实例，也就是 <函数返回值类型为泛型类型>，作为 <协变点>
  *     <协变点>的意义在于让子类能够返回子类或其父类参数的实例，而父类只能返回其父类参数的实例
  */
-sealed class List<out T> {
-    object Nil : List<Nothing>() {
+sealed class ListT<out T> {
+    object Nil : ListT<Nothing>() {
         override fun toString(): String {
             return "Nil"
         }
     }
 
     /**注意，这里的[head]也是<协变点>，因为他是成员属性，有[getter]方法*/
-    data class Cons<T>(val head: T, val tail: List<T>) : List<T>() {
+    data class Cons<T>(val head: T, val tail: ListT<T>) : ListT<T>() {
         override fun toString(): String {
             return "$head,$tail"
         }
@@ -90,9 +90,9 @@ class Dustbin<in T : Waste> {
 
 fun main() {
     /**协变应用场景*/
-    val list = List.Cons(1f, List.Cons(1f, List.Nil))
+    val list = ListT.Cons(1f, ListT.Cons(1f, ListT.Nil))
     println(list)
-    val list2 = List.Cons(1f, List.Nil)
+    val list2 = ListT.Cons(1f, ListT.Nil)
     println(list2.joinToString('-'))
     //教辅书店
     val eduBookStore: BookStore<EduBook> = BookStore<EduBook>()
