@@ -55,3 +55,20 @@ class Person(var age: Int, name: String) {
         println("age:$age")
     }
 }
+
+abstract class Parent{
+    init {
+        println("parent init")
+    }
+}
+
+class Child2:Parent(){
+    /**先初始化父类，再初始化子类*/
+    init {
+        println("child2 init")
+    }
+}
+
+fun main(){
+    Child2()
+}

@@ -31,6 +31,7 @@ class ConfirmNotification(
     val onCancel: OnCancel
 ) : Notification(title, content)
 
+/**给泛型参数Self添加约束*/
 open class NotificationBuilder<Self:NotificationBuilder<Self>>:SelfType<Self> {
     protected var title: String = ""
     protected var content: String = ""
