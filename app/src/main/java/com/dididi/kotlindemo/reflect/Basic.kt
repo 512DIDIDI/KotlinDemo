@@ -46,41 +46,42 @@ object B{
 @ExperimentalStdlibApi
 fun main() {
     val container = Container(mutableListOf(1, 3, 2, 4, 5, 6, 7))
-    //获取KClass引用
+    /**获取KClass引用**/
     val kClass = container::class
-    //获取java Class引用
+    /**获取java Class引用*/
     val jClass = container.javaClass
-    //KClass与java Class转换
+    /**KClass与java Class转换*/
     val jCls = kClass.java
     val kCls = jCls.kotlin
-    //获取类型参数信息，即泛型信息
+    /**获取类型参数信息，即泛型信息*/
     val typeParameters = kClass.typeParameters
     val kTypeParameters = typeParameters[0]
-    //是否具体化(泛型)
+    /**是否具体化(泛型)*/
     println(kTypeParameters.isReified)
-    //类型参数名字
+    /**类型参数名字*/
     println(kTypeParameters.name)
-    //类型参数上界(即:后的内容)
+    /**类型参数上界(即:后的内容)*/
     println(kTypeParameters.upperBounds)
+    /**获取泛型型变*/
     println(kTypeParameters.variance)
-    //从构造函数获取入参信息
+    /**从构造函数获取入参信息*/
     val constructors = kClass.constructors
     for (KFunction in constructors){
         KFunction.parameters.forEach {
             val name = it.name
             val type = it.type
             println("name = $name , type = $type")
-            //打印泛型信息，KTypeProjection，有两个变量(是否泛型型变，泛型参数)
+            /**打印泛型信息，KTypeProjection，有两个变量(是否泛型型变，泛型参数)*/
             type.arguments.forEach {
                 println(it)
             }
         }
     }
-    //可通过typeOf来获取KType，能够保留泛型信息，不被泛型擦除
+    /**可通过typeOf来获取KType，能够保留泛型信息，不被泛型擦除*/
     val map = typeOf<Map<String,Int>>()
     map.arguments.forEach {
         println(it)
     }
-    //通过objectInstance来获取object实例
+    /**通过objectInstance来获取object实例*/
     B::class.objectInstance?.hello()
 }
