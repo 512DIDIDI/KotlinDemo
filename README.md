@@ -39,4 +39,19 @@
   6. 练习-统计文件中字符个数
   7. 练习-实现html DSL
 * [泛型](/app/src/main/java/com/dididi/kotlindemo/generic/generic.md)
+  1. 泛型的基本概念
+  2. 泛型约束
+  3. 泛型型变
+  4. `UnsafeVariance`违反型变约束
+  5. 星投影
+  6. 泛型实现原理与内联特化
+  7. 练习-用`Kotlin`实现`Scala`的`SelfType`
+  8. 练习-基于泛型实现`Model`实例注入
+* [反射](/app/src/main/java/com/dididi/kotlindemo/reflect/reflect.md)
+  1. 反射基本概念与用法
+  2. 练习-获取泛型实参
+  3. 练习-为数据类实现`DeepCopy`
+  4. 练习-`Model`映射
+  5. 练习-可释放对象引用的不可空类型
+* [注解](/app/src/main/java/com/dididi/kotlindemo/annotaion/annotaion.md)
 * [协程](/app/src/main/java/com/dididi/kotlindemo/coroutines/coroutines.md)

@@ -8,7 +8,7 @@ import kotlin.reflect.typeOf
  * @since 17/01/2019
  * @describe
  * 反射基本概念：允许程序再运行时访问程序结构(类，接口，方法，属性等语法)的一类特性
- * kotlin反射分为四大类：
+ * kotlin反射分为四大数据结构：
  *  1.KClass(访问对象实际类型，不包含泛型参数，如Map)
  *  2.KType(描述为进行泛型擦除的类型或泛型参数，例如Map<String,Int>)
  *  3.KFunction(描述函数)

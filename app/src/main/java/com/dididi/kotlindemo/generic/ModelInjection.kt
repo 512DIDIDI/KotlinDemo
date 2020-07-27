@@ -100,6 +100,9 @@ class ModelDelegate<T:AbsModel>(private val kClass: KClass<T>){
     }
 }
 
+/**
+ * 用object来 优化class代理类需要实例化
+ */
 object ModelDelegate2{
     operator fun <T:AbsModel2> getValue(thisRef: Any,property: KProperty<*>):T{
         return Models2.run {
