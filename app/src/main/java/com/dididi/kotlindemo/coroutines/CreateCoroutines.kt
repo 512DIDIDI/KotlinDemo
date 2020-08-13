@@ -30,6 +30,7 @@ fun main(){
         println("world")
     }
 
+
     //方法三 通过实例化CoroutineScope对象，调用launch开启协程
     //CoroutineScope()实例化需要CoroutineContext参数
     //推荐使用  通过CoroutineContext来管理和控制生命周期
@@ -44,6 +45,7 @@ fun main(){
             delay(200L)
             println("2.Task from runBlocking")
         }
+        println("task after launch")
         //创建一个协程作用域，并在所有已启动的子协程执行完毕前不会结束
         //同runBlocking类似，但其会释放底层线程用于其他用途
         coroutineScope {

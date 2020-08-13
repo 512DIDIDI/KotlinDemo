@@ -29,6 +29,7 @@ fun main() {
     set -= person
     set += person2
     println(set.joinToString())
+
 }
 
 private class Person(val age: Int, val name: String) {

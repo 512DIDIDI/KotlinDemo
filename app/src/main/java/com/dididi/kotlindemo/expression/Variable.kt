@@ -8,7 +8,9 @@ package com.dididi.kotlindemo.expression
  * @describe 常量与变量
  */
 
+
 class Variable {
+
     //类似这种情况 val就不等价于java中的final常量
     //运行时才能确定值，调用处通过引用获取值
     val b: Int

@@ -4,7 +4,10 @@ package com.dididi.kotlindemo.`class`
 /**
  * @author dididi(yechao)
  * @since 11/01/2019
- * @describe
+ * @describe 单例模式
+ * 饿汉与懒汉的区别在于：
+ *          1. 饿汉是在用到类的时候就初始化单例(例如加载Singleton这个类)
+ *          2. 而懒汉是在需要用到单例时才初始化单例(一般来说就是调用getInstance()方法)
  */
 
 /**

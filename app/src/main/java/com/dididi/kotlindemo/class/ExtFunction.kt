@@ -24,3 +24,4 @@ fun main(){
     val aTimes = a::times
     println(aTimes(5))
 }
+
