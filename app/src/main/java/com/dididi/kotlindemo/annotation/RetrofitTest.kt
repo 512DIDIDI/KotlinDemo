@@ -1,5 +1,7 @@
 package com.dididi.kotlindemo.annotation
 
+import com.dididi.kotlindemo.annotation.retrofit.Api
+import com.dididi.kotlindemo.annotation.retrofit.Get
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import okhttp3.OkHttpClient
@@ -17,31 +19,13 @@ import kotlin.reflect.full.valueParameters
  * retrofit：
  * 1. 通过create动态代理创建ServiceApi的代理对象，
  * 2. 通过InvocationHandler.invoke处理ServiceApi内的所有方法，
- * 3. 从缓存中获取ServiceMethod，ServiceMethod中对Retrofit的注解进行处理拼接成OkHttp.Call
- * 4. CallAdapter将Call转为对应的适配器，作为ServiceApi的方法的返回值
- * 5. 调用CallAdapter匹配的对象(原生是Call kotlin还可以使用Deffered)执行请求
- * 6. 获取响应报文body
+ * 3. 创建ServiceMethod或从缓存中读取，ServiceMethod主要是处理注解，返回类型等
+ * 4. 将ServiceMethod封装成OkHttpCall（Retrofit2.Call的子类），OkHttpCall可以在需要的时候(如调用enqueue)创建OkHttp3.Call对象，进行网络请求。
+ * 5. CallAdapter将OkHttpCall转为对应的适配器（原生是Retrofit2.Call,kotlin还可以使用Deffered），作为ServiceApi的方法的返回值
+ * 6. 主线程处理响应
  */
 
-@Target(AnnotationTarget.CLASS)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Api(val url: String = "")
 
-@Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Get(val url: String = "")
-
-@Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Post(val url:String = "")
-
-@Target(AnnotationTarget.VALUE_PARAMETER)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Query(val url:String ="")
-
-@Target(AnnotationTarget.VALUE_PARAMETER)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Path(val path:String ="")
 
 @Api("https://www.wanandroid.com")
 interface Service {
