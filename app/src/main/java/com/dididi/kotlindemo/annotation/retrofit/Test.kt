@@ -24,7 +24,7 @@ fun main() {
             }
         })
     val loginApi = Retrofit.create<WanandroidService.LoginApi>()
-    println(loginApi.login("dididi","123456").execute())
+    println(loginApi.login("haha","haha").execute())
 }
 
 @Api("https://www.wanandroid.com")
