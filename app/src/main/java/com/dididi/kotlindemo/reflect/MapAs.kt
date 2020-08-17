@@ -9,7 +9,7 @@ import kotlin.reflect.full.primaryConstructor
  * @author dididi(叶超)
  * @email 512dididi@gmail.com
  * @since 26/07/2020
- * @describe Model映射
+ * @describe Model映射（简易版，需要两个参数名相同）
  */
 
 /**任意类型映射为数据类*/
