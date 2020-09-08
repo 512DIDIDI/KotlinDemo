@@ -18,6 +18,7 @@ import kotlin.reflect.full.primaryConstructor
  */
 @Target(AnnotationTarget.CLASS)
 annotation class MappingStrategy(val kclz:KClass<NameStrategy>)
+
 /**
  * 用于注解参数名
  */
