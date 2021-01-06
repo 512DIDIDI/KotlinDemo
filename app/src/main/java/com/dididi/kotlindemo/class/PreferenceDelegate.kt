@@ -1,7 +1,6 @@
 package com.dididi.kotlindemo.`class`
 
 import android.content.Context
-import java.lang.IllegalArgumentException
 import kotlin.reflect.KProperty
 
 
@@ -21,13 +20,13 @@ import kotlin.reflect.KProperty
  *      fun <T> getPreference(defaultValue: T) = PreferenceDelegate(App.context, defaultValue).apply {
  *          pathName = "user_preference"
  *      }
- *      inner class User{
+ *      object User{
  *          var name by getPreference("")
  *          var age by getPreference(0)
  *      }
- *      val user = User()
- *      user.name = "dididi"
- *      user.age = 23
+ *      usage:
+ *      User.name = "dididi"
+ *      User.age = 23
  *      println("${user.name} | ${user.age}")
  */
 
